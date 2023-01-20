@@ -15,7 +15,8 @@ def interface():
     
 def hdl_driver():
     hdl_in = hdl_input()
-    return hdl_anal(hdl_in)
+    hdl_anly= hdl_anal(hdl_in)
+    hdl_ouput(hdl_in, hdl_anly)
     
     
 def hdl_input():
@@ -30,5 +31,9 @@ def hdl_anal(hdl_int):
         return "borderline Low"
     else:
         return "Low"
+    
+def hdl_output(hdl_val, hdl_analy):
+    print("The HDL result of {} is considered {}".format(hdl_val, hdl_analy))
+    return
 
 interface()
