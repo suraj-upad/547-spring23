@@ -14,4 +14,12 @@ def hdl_input():
     hdl_val = int(hdl_val)
     return hdl_val
 
+def hdl_anal(hdl_int):
+    if hdl_int >= 60:
+        return "Normal"
+    elif hdl>= 40:
+        return "borderline Low"
+    else:
+        return "Low"
+
 interface()
