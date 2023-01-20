@@ -9,4 +9,9 @@ def interface():
             keep_running = False
     print("program is done")
    
+def hdl_input():
+    hdl_val = input("enter the hdl result:")
+    hdl_val = int(hdl_val)
+    return hdl_val
+
 interface()
