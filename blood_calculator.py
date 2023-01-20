@@ -16,7 +16,7 @@ def interface():
 def hdl_driver():
     hdl_in = hdl_input()
     hdl_anly= hdl_anal(hdl_in)
-    hdl_ouput(hdl_in, hdl_anly)
+    hdl_output(hdl_in, hdl_anly)
     
     
 def hdl_input():
@@ -27,7 +27,7 @@ def hdl_input():
 def hdl_anal(hdl_int):
     if hdl_int >= 60:
         return "Normal"
-    elif hdl>= 40:
+    elif hdl_int>= 40:
         return "borderline Low"
     else:
         return "Low"
