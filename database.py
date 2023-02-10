@@ -8,10 +8,10 @@ def create_patient_entry(first_name, last_name, patient_mrn, patient_age):
 
 
 def main_driver():
-    db = []
-    db.append(create_patient_entry("Ann", "Ables", 1, 34))
-    db.append(create_patient_entry("Bob","Boyles", 2, 45))
-    db.append(create_patient_entry("Chris","Chou", 3, 52))
+    db = {}
+    db[1]=(create_patient_entry("Ann", "Ables", 1, 34))
+    db[2]=(create_patient_entry("Bob","Boyles", 2, 45))
+    db[3]=(create_patient_entry("Chris","Chou", 3, 52))
     #print(db)
     print_database(db)
     add_test_to_patient(db, 1, "HDL", 120)
@@ -20,8 +20,8 @@ def main_driver():
     room_numbers = ["103", "232", "333"]
     print(db)
     print("Chris Chou is an {}".format(minor_or_adult(db[2])))
-    return
-    print_directory(db, room_numbers)
+   # return
+    #print_directory(db, room_numbers)
     print(get_test_result(db, 2, "LDL"))
 
 
@@ -33,7 +33,7 @@ def get_full_name(patient):
 
 
 def print_database(db):
-    for patient in db:
+    for patient in db.values():
         mrn = patient["MRN"]
         name = get_full_name(patient)
         age = patient["Age"]
@@ -42,16 +42,20 @@ def print_database(db):
 
 def print_directory(db, room_numbers):
     for i, patient in enumerate(db):
-        print("Patient {} is in room {}".format(patient[0], room_numbers[i]))
-    for patient, rn in zip(db, room_numbers):
-        print("Patient {} is in room {}".format(patient[0], rn))
+        print("Patient {} is in room {}".format(get_full_name(patient), room_numbers[i]))
+    #for patient, rn in zip(db, room_numbers):
+    #    print("Patient {} is in room {}".format(patient[0], rn))
 
 
 def get_patient_entry(db, mrn_to_find):
-    for patient in db:
-        if patient["MRN"] == mrn_to_find:
-            return patient
-    return False
+    patient = db.get(mrn_to_find)
+    if patient == None:
+        return False
+    return patient
+    # for patient in db:
+    #     if patient["MRN"] == mrn_to_find:
+    #         return patient
+    # return False
 
 
 def add_test_to_patient(db, mrn_to_find, test_name, test_value):
