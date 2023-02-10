@@ -10,9 +10,10 @@ def create_patient_entry(first_name, last_name, patient_mrn, patient_age):
 def main_driver():
     db = []
     db.append(create_patient_entry("Ann", "Ables", 1, 34))
-    db.append(create_patient_entry("Bob"," Boyles", 2, 45))
-    db.append(create_patient_entry("Chris"," Chou", 3, 52))
-    print(db)
+    db.append(create_patient_entry("Bob","Boyles", 2, 45))
+    db.append(create_patient_entry("Chris","Chou", 3, 52))
+    #print(db)
+    print_database(db)
     return
     add_test_to_patient(db, 1, "HDL", 120)
     add_test_to_patient(db, 2, "LDL", 100)
@@ -25,8 +26,16 @@ def main_driver():
 def get_full_name(patient):
     first = patient["First Name"]
     last = patient["Last Name"]
-    name = first + " " + name
+    name = first + " " + last
     return name
+
+
+def print_database(db):
+    for patient in db:
+        mrn = patient["MRN"]
+        name = get_full_name(patient)
+        age = patient["Age"]
+        print("MRN: {}, Full Name: {}, Age: {}".format(mrn, name, age))
 
 def print_directory(db, room_numbers):
     for i, patient in enumerate(db):
@@ -37,7 +46,7 @@ def print_directory(db, room_numbers):
 
 def get_patient_entry(db, mrn_to_find):
     for patient in db:
-        if patient[1] == mrn_to_find:
+        if patient["MRN"] == mrn_to_find:
             return patient
     return False
 
