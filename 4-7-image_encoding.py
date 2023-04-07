@@ -31,6 +31,12 @@ def view_b64_image(base64_string):
     plt.show()
     return
 
+def save_b64_image(base64_string):
+    image_bytes = base64.b64decode(base64_string)
+    with open("new-img.jpg", "wb") as out_file:
+        out_file.write(image_bytes)
+    return
+
 server = 'http://vcm-21170.vm.duke.edu'
 
 def main():
@@ -47,6 +53,8 @@ def main():
     print(r.status_code)
     print(r.text)
     view_b64_image(r.text)
+    
+    save_b64_image(r.text)
 
 if __name__ == "__main__":
     main()
